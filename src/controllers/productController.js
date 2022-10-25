@@ -18,6 +18,7 @@ const productList = async (req, res) => {
     console.log(e);
   }
 };
+// dkdk
 // dhdh
 
 module.exports = { productCreate, productList };

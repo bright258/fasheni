@@ -6,9 +6,13 @@ const {
   updatedUser,
 } = require("../services/user");
 
+const { signUp } = require("../utils/signUp");
+
 const userCreate = async (req, res) => {
   try {
-    const user = await createUser(req.body);
+    const username = req.body.username;
+    const password = signUp(req.body.password);
+    const user = await createUser({ username, password });
     user && res.status(201).json("user created");
   } catch (e) {
     console.log(e);
@@ -61,6 +65,11 @@ const userUpdate = async (req, res) => {
     console.log(e);
   }
 };
+
+// const login = async (req, res)=>{
+//     const body = req.body.password
+// }
+
 module.exports = {
   userCreate,
   userList,

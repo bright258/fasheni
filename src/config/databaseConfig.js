@@ -1,15 +1,16 @@
 const pgp = require("pg-promise")();
 require("dotenv").config();
 const db_url = process.env.DATABASE_URL;
+const { HOST, DB_PORT, DB_DATABASE, DB_USER, DB_PASSWORD } = process.env;
 
 // const database = pgp(db_url);
 
 const cn = {
-  host: "localhost",
-  port: 5432,
-  database: "atadb",
-  user: "george",
-  password: "password",
+  host: HOST,
+  port: DB_PORT,
+  database: DB_DATABASE,
+  user: DB_USER,
+  password: DB_PASSWORD,
 };
 
 const productTableCreator = async () => {

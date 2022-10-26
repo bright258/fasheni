@@ -12,7 +12,7 @@ const cn = {
   password: "password",
 };
 
-const tableCreator = async () => {
+const productTableCreator = async () => {
   try {
     const dt = await database.query(
       `CREATE TABLE IF NOT EXISTS 
@@ -27,6 +27,21 @@ const tableCreator = async () => {
   }
 };
 
+const userTableCreator = async () => {
+  try {
+    await database.query(
+      `CREATE TABLE IF NOT EXISTS 
+        userss(
+        id SERIAL,
+        username VARCHAR, 
+        password VARCHAR 
+        )`
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const database = pgp(cn);
 
-module.exports = { database, tableCreator };
+module.exports = { database, productTableCreator, userTableCreator };

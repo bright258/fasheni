@@ -16,7 +16,9 @@ const tableCreator = async () => {
   try {
     const dt = await database.query(
       `CREATE TABLE IF NOT EXISTS 
-        prod(name VARCHAR, 
+        productss(
+        id SERIAL,
+        name VARCHAR UNIQUE, 
         price INT , 
         description VARCHAR )`
     );

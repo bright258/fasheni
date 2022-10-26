@@ -4,6 +4,11 @@ api for fashion ecommerce site
 
 link to documentation: https://documenter.getpostman.com/view/23500140/2s8YChhBXV
 
+Prerequisites:
+
+1. git clone remote url
+2. npm install
+
 To Test this api:
 
 1. Setup a postgreSQL database on your local machine using pgadmin and psql on your terminal

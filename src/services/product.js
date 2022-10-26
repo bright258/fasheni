@@ -19,14 +19,15 @@ const createProduct = async (body) => {
   }
 };
 
-const listProducts = async () => {
+const listProducts = async (limit, offset) => {
   try {
     const output = await database.manyOrNone(
-      "SELECT * FROM productss ORDER BY name DESC"
+      "SELECT * FROM productss ORDER BY name DESC LIMIT $(limit) OFFSET $(offset)",
+      {
+        limit: limit,
+        offset: offset,
+      }
     );
-    // .then((result) => {
-    //   return result;
-    // });
 
     return output;
   } catch (e) {

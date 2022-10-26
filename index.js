@@ -13,6 +13,7 @@ const { router } = require("./src/router/productRouters");
 const { user } = require("./src/router/userRouters");
 const { signIn } = require("./src/utils/signIn");
 
+// database connection
 const dataConnect = database
   .connect()
   .then((data) => {
@@ -31,6 +32,7 @@ app.listen(port, (req, res) => {
   console.log(`server is up on port ${port}`);
 });
 
+// express middleware
 app.use(express.json());
 app.use("/api/v1", router);
 app.use("/api/v1/user", user);

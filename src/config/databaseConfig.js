@@ -5,6 +5,7 @@ const { HOST, DB_PORT, DB_DATABASE, DB_USER, DB_PASSWORD } = process.env;
 
 // const database = pgp(db_url);
 
+// database details
 const cn = {
   host: HOST,
   port: DB_PORT,
@@ -13,6 +14,7 @@ const cn = {
   password: DB_PASSWORD,
 };
 
+// product table creator function
 const productTableCreator = async () => {
   try {
     const dt = await database.query(
@@ -27,6 +29,8 @@ const productTableCreator = async () => {
     console.log(err);
   }
 };
+
+// user table creator function
 
 const userTableCreator = async () => {
   try {

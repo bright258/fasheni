@@ -10,6 +10,8 @@ const {
 } = require("../controllers/userController");
 const { verify } = require("../middleware/userVerification");
 
+// user routes
+
 user.post("/signup", userCreate);
 user.get("/list", verify, userList);
 user.get("/single", getSingleUser);

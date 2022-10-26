@@ -10,6 +10,7 @@ const { verify } = require("../middleware/userVerification");
 const express = require("express");
 const router = express();
 
+// product routes
 router.post("/product/create", productCreate);
 router.get("/products", verify, productList);
 router.get("/product", verify, getSingleProduct);

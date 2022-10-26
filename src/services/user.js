@@ -13,7 +13,7 @@ const createUser = async (body) => {
 
     return input;
   } catch (e) {
-    return { e };
+    return e;
   }
 };
 

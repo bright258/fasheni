@@ -17,7 +17,11 @@ const productCreate = async (req, res) => {
 
 const productList = async (req, res) => {
   try {
-    const products = await listProducts();
+    const page = req.query.page;
+    const limit = 5;
+    const offset = limit * page - limit;
+    console.log(offset);
+    const products = await listProducts(limit, offset);
     // console.log(products);
     products && res.status(200).json(products);
   } catch (e) {

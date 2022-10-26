@@ -2,7 +2,7 @@
 const { database } = require("../config/databaseConfig");
 
 const createProduct = async (body) => {
-  console.log("hello", body.description);
+  // console.log("hello", body.description);
   try {
     const input = await database.query(
       "INSERT INTO productss(name, price, description) VALUES(${name}, ${price}, ${description})",
@@ -21,7 +21,9 @@ const createProduct = async (body) => {
 
 const listProducts = async () => {
   try {
-    const output = await database.manyOrNone("SELECT * FROM productss");
+    const output = await database.manyOrNone(
+      "SELECT * FROM productss ORDER BY name DESC"
+    );
     // .then((result) => {
     //   return result;
     // });

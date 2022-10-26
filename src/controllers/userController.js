@@ -7,6 +7,7 @@ const {
 } = require("../services/user");
 
 const { signUp } = require("../utils/signUp");
+const { signIn } = require("../utils/signIn");
 
 const userCreate = async (req, res) => {
   try {
@@ -14,6 +15,7 @@ const userCreate = async (req, res) => {
     const password = signUp(req.body.password);
     const user = await createUser({ username, password });
     user && res.status(201).json("user created");
+    return user;
   } catch (e) {
     console.log(e);
   }
@@ -66,9 +68,16 @@ const userUpdate = async (req, res) => {
   }
 };
 
-// const login = async (req, res)=>{
-//     const body = req.body.password
-// }
+const userLogin = async (req, res) => {
+  try {
+    const body = req.body;
+    const user = await signIn(body);
+    user && res.status(200).json(user);
+    console.log(user);
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 module.exports = {
   userCreate,
@@ -76,4 +85,5 @@ module.exports = {
   getSingleUser,
   userDeletion,
   userUpdate,
+  userLogin,
 };

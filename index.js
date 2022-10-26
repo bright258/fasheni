@@ -11,6 +11,7 @@ const { createProduct } = require("./src/services/product");
 const { productTableCreator } = require("./src/config/databaseConfig");
 const { router } = require("./src/router/productRouters");
 const { user } = require("./src/router/userRouters");
+const { signIn } = require("./src/utils/signIn");
 
 const dataConnect = database
   .connect()
@@ -24,6 +25,7 @@ const dataConnect = database
 // create tables
 productTableCreator();
 userTableCreator();
+// signIn();
 
 app.listen(port, (req, res) => {
   console.log(`server is up on port ${port}`);

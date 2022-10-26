@@ -5,13 +5,15 @@ const {
   productDeletion,
   productUpdate,
 } = require("../controllers/productController");
+const { verify } = require("../middleware/userVerification");
+
 const express = require("express");
 const router = express();
 
-router.post("/product/create", productCreate);
-router.get("/products", productList);
-router.get("/product", getSingleProduct);
-router.delete("/product/delete", productDeletion);
-router.put("/product/update", productUpdate);
+router.post("/product/create", verify, productCreate);
+router.get("/products", verify, productList);
+router.get("/product", verify, getSingleProduct);
+router.delete("/product/delete", verify, productDeletion);
+router.put("/product/update", verify, productUpdate);
 
 module.exports = { router };
